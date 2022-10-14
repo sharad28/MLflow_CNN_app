@@ -11,6 +11,14 @@ artifacts:
   TENSORBOARD_ROOT_LOG_DIR: tensorboard_log_dir
   CALLBACKS_DIR: callbacks
 
+
+
+data:
+  data_source: "E:\\dogs-vs-cats\\train\\train"
+  local_dir : "D:\\iNeuron\\Deep_Learning_Sunny\\125_ML_flow_project_part_1\\data"
+  bad_dir : "D:\\iNeuron\\Deep_Learning_Sunny\\125_ML_flow_project_part_1\\bad_img"
+
+
 source_download_dirs:
   - path_to_data_1
   - path_to_data_1
