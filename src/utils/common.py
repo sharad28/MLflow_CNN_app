@@ -1,4 +1,6 @@
+import imghdr
 import os
+from tkinter import Image
 import yaml
 import logging
 import time
@@ -22,3 +24,22 @@ def save_json(path: str, data: dict) -> None:
         json.dump(data, f, indent=4)
 
     logging.info(f"json file saved at: {path}")
+
+def validate_img(img_full_path):
+    try:
+        logging.info(f"Started verify img: {img_full_path}")
+        img = Image.open(img_full_path)
+        img.verify()
+        if len(img.getbands()) !=3 or imghdr.what(img_full_path) not in ['jpeg','png']:
+            
+
+        logging.info(f"Completed verify img: {img_full_path}")
+        return True
+    except Exception as e:
+
+
+def moving_data(source,destination):
+    for imgs in os.listdir(source):
+        if validate_img(os.path.join(source,imgs)): 
+
+
