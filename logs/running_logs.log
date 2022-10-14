@@ -1,0 +1,18 @@
+[2022-10-14 15:57:55,031: INFO: stage_01_get_data]: 
+********************
+[2022-10-14 15:57:55,031: INFO: stage_01_get_data]: >>>>> stage get_data started <<<<<
+[2022-10-14 15:57:55,031: INFO: common]: yaml file: configs/config.yaml loaded successfully
+[2022-10-14 15:57:55,031: INFO: stage_01_get_data]: >>>>> stage get_data completed!<<<<<
+
+[2022-10-14 16:01:23,028: INFO: stage_01_get_data]: 
+********************
+[2022-10-14 16:01:23,028: INFO: stage_01_get_data]: >>>>> stage get_data started <<<<<
+[2022-10-14 16:01:23,028: INFO: common]: yaml file: configs/config.yaml loaded successfully
+[2022-10-14 16:01:23,028: INFO: stage_01_get_data]: >>>>> stage get_data completed!<<<<<
+
+[2022-10-14 16:09:18,809: INFO: stage_01_get_data]: 
+********************
+[2022-10-14 16:09:18,809: INFO: stage_01_get_data]: >>>>> stage get_data started <<<<<
+[2022-10-14 16:09:18,809: INFO: common]: yaml file: configs/config.yaml loaded successfully
+[2022-10-14 16:09:18,809: INFO: stage_01_get_data]: >>>>> stage get_data completed!<<<<<
+
