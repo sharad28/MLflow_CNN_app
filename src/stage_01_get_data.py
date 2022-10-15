@@ -3,7 +3,8 @@ import os
 import shutil
 from tqdm import tqdm
 import logging
-from src.utils.common import read_yaml, create_directories, moving_data
+from src.utils.common import read_yaml, create_directories
+from src.utils.common import moving_data
 import random
 from os import listdir
 import numpy as np
@@ -29,7 +30,8 @@ def main(config_path):
     bad_img_dir = config['data']['bad_dir']
     create_directories(local_dir)
     create_directories(bad_img_dir)
-    moving_data = moving_data(data_path,local_dir)
+    print(data_path,local_dir)
+    moving_data(data_path,local_dir)
     pass
 
 
@@ -47,4 +49,3 @@ if __name__ == '__main__':
         logging.info(f">>>>> stage {STAGE} completed!<<<<<\n")
     except Exception as e:
         logging.exception(e)
-        raise e
