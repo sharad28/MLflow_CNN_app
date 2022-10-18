@@ -11,6 +11,7 @@ import numpy as np
 from tensorflow.keras.utils import load_img
 from tensorflow.keras.utils import img_to_array
 import imghdr
+from PIL import Image
 
 STAGE = "validate_data" ## <<< change stage name 
 
@@ -43,7 +44,7 @@ def validate_data(source_dir,bad_img_dir):
                 bad_path = os.path.join(bad_img_dir[0],img)
                 shutil.move(path_to_img, bad_data_path)
                 continue
-            print(f"{img_path}" is verified with format {imghdr.what(img_path)})    
+            print(f"{img_path} is verified with format {imghdr.what(img_path)}")    
         except Exception as e:
             print(f"{img_path} is bad")
             bad_data_path = os.path.join(bad_img_dir[0],img)
