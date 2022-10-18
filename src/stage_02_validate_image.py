@@ -12,7 +12,7 @@ from tensorflow.keras.utils import load_img
 from tensorflow.keras.utils import img_to_array
 import imghdr
 
-STAGE = "get_data" ## <<< change stage name 
+STAGE = "validate_data" ## <<< change stage name 
 
 logging.basicConfig(
     filename=os.path.join("logs", 'running_logs.log'), 
@@ -27,7 +27,9 @@ def main(config_path):
     config = read_yaml(config_path)
     data_path = config['data']['data_source']
     local_dir = config['data']['local_dir']
-    create_directories(local_dir)
+    bad_img_dir = config['data']['bad_dir']
+    create_directories(bad_img_dir)
+    print(data_path,local_dir)
     moving_data(data_path,local_dir)
     pass
 
