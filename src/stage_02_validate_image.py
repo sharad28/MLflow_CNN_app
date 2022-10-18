@@ -23,6 +23,7 @@ logging.basicConfig(
     )
 
 
+
 def main(config_path):
     ## read config files
     config = read_yaml(config_path)
@@ -30,7 +31,10 @@ def main(config_path):
     bad_img_dir = config['data']['bad_dir']
     create_directories(bad_img_dir)
     validate_data(local_dir,bad_img_dir)
-    pass
+
+    label1 = os.path.join(config["data"]['train'],config["data"]['label1']")
+    label2 = os.path.join(config["data"]['train'],config["data"]['label2']")
+    create_dir_label(local_dir,label1,label2)
 
 def validate_data(source_dir,bad_img_dir):
     logging.info("Validation of images are started")
@@ -52,7 +56,24 @@ def validate_data(source_dir,bad_img_dir):
             raise e
     logging.info("Validation of images is completed")
     
+def create_dir_label(local_dir,label1,label2):
 
+    # label1 = os.path.join("train_data","class_1")
+    # label2 = os.path.join("train_data","class_2")
+    rest_img = []
+    create_directories([label1,label2])
+    for img in os.listdir(local_dir[0]):
+        data_path = os.path.join(local_dir[0],img)
+        if img.startswith("cat"):
+            nw_path = os.path.join(label1,img)
+            shutil.move(data_path,nw_path)
+        elif img.startswith("dog"):
+            nw_path = os.path.join(label2,img)
+            shutil.move(data_path,nw_path)
+        else:
+            rest_img.append(img)
+    logging.error(f"Following images are not moved to train data : {rest_img}")
+    
 
 
 if __name__ == '__main__':
@@ -67,3 +88,4 @@ if __name__ == '__main__':
         logging.info(f">>>>> stage {STAGE} completed!<<<<<\n")
     except Exception as e:
         logging.exception(e)
+        raise e
