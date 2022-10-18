@@ -17,6 +17,9 @@ data:
   data_source: 'E:\\dogs-vs-cats\\train\\train'
   local_dir : ['data']
   bad_dir : ['bad_data_img']
+  train : 'train_data'
+  label1 : 'class_1'
+  label2 : 'class_2'
 
 
 source_download_dirs:
