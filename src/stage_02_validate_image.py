@@ -25,25 +25,42 @@ logging.basicConfig(
 def main(config_path):
     ## read config files
     config = read_yaml(config_path)
-    data_path = config['data']['data_source']
     local_dir = config['data']['local_dir']
     bad_img_dir = config['data']['bad_dir']
     create_directories(bad_img_dir)
-    print(data_path,local_dir)
-    moving_data(data_path,local_dir)
+    validate_data(local_dir,bad_img_dir)
     pass
+
+def validate_data(source_dir,bad_img_dir):
+    logging.info("Validation of images are started")
+    for img in os.listdir(source_dir[0]):
+        img_path = os.path.join(source_dir[0],img)
+        try:
+            img1 = Image.open(img_path)
+            img1.verify()
+
+            if len(img1.getbands()) != 3 or imghdr.what(img_path) not in ['jpge','png']:
+                bad_path = os.path.join(bad_img_dir[0],img)
+                shutil.move(path_to_img, bad_data_path)
+                continue
+            print(f"{img_path}" is verified with format {imghdr.what(img_path)})    
+        except Exception as e:
+            print(f"{img_path} is bad")
+            bad_data_path = os.path.join(bad_img_dir[0],img)
+            shutil.move(img_path,bad_data_path)
+    logging.info("Validation of images is completed")
+    
+
 
 
 if __name__ == '__main__':
     args = argparse.ArgumentParser()
     args.add_argument("--config", "-c", default="configs/config.yaml")
-    # args.add_argument("--params", "-p", default="params.yaml")
     parsed_args = args.parse_args()
 
     try:
         logging.info("\n********************")
         logging.info(f">>>>> stage {STAGE} started <<<<<")
-        # main(config_path=parsed_args.config, params_path=parsed_args.params)
         main(config_path=parsed_args.config)
         logging.info(f">>>>> stage {STAGE} completed!<<<<<\n")
     except Exception as e:
