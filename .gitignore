@@ -142,4 +142,5 @@ mlruns/
 
 #ignore data
 /data
-
+#ignore log data
+logs\running_logs.log
