@@ -36,19 +36,20 @@ def validate_data(source_dir,bad_img_dir):
     logging.info("Validation of images are started")
     for img in os.listdir(source_dir[0]):
         img_path = os.path.join(source_dir[0],img)
+        bad_data_path = os.path.join(bad_img_dir[0],img)
         try:
             img1 = Image.open(img_path)
             img1.verify()
 
-            if len(img1.getbands()) != 3 or imghdr.what(img_path) not in ['jpge','png']:
-                bad_path = os.path.join(bad_img_dir[0],img)
-                shutil.move(path_to_img, bad_data_path)
+            if len(img1.getbands()) != 3 or imghdr.what(img_path) not in ['jpeg','png','jpg']:
+                logging.error(f"length = {len(img1.getbands())} and format = {imghdr.what(img_path)}")
+                shutil.move(img_path, bad_data_path)
                 continue
             print(f"{img_path} is verified with format {imghdr.what(img_path)}")    
         except Exception as e:
-            print(f"{img_path} is bad")
-            bad_data_path = os.path.join(bad_img_dir[0],img)
+            print(f"{img_path} is bad")            
             shutil.move(img_path,bad_data_path)
+            raise e
     logging.info("Validation of images is completed")
     
 
