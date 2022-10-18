@@ -16,7 +16,7 @@ artifacts:
 data:
   data_source: 'E:\\dogs-vs-cats\\train\\train'
   local_dir : ['data']
-  bad_dir : ['data\bad_img']
+  bad_dir : ['bad_data_img']
 
 
 source_download_dirs:

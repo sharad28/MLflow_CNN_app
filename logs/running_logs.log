@@ -1,18 +1,87 @@
-[2022-10-14 15:57:55,031: INFO: stage_01_get_data]: 
+[2022-10-18 19:33:41,126: INFO: stage_02_validate_image]: 
 ********************
-[2022-10-14 15:57:55,031: INFO: stage_01_get_data]: >>>>> stage get_data started <<<<<
-[2022-10-14 15:57:55,031: INFO: common]: yaml file: configs/config.yaml loaded successfully
-[2022-10-14 15:57:55,031: INFO: stage_01_get_data]: >>>>> stage get_data completed!<<<<<
+[2022-10-18 19:33:41,126: INFO: stage_02_validate_image]: >>>>> stage validate_data started <<<<<
+[2022-10-18 19:33:41,126: INFO: common]: yaml file: configs/config.yaml loaded successfully
+[2022-10-18 19:33:41,126: INFO: common]: created directory at: data\bad_img
+[2022-10-18 19:33:41,126: INFO: stage_02_validate_image]: Validation of images are started
+[2022-10-18 19:33:41,153: ERROR: stage_02_validate_image]: Cannot move a directory 'data\bad_img' into itself 'data\bad_img\bad_img'.
+Traceback (most recent call last):
+  File "src/stage_02_validate_image.py", line 39, in validate_data
+    img1 = Image.open(img_path)
+NameError: name 'Image' is not defined
 
-[2022-10-14 16:01:23,028: INFO: stage_01_get_data]: 
-********************
-[2022-10-14 16:01:23,028: INFO: stage_01_get_data]: >>>>> stage get_data started <<<<<
-[2022-10-14 16:01:23,028: INFO: common]: yaml file: configs/config.yaml loaded successfully
-[2022-10-14 16:01:23,028: INFO: stage_01_get_data]: >>>>> stage get_data completed!<<<<<
+During handling of the above exception, another exception occurred:
 
-[2022-10-14 16:09:18,809: INFO: stage_01_get_data]: 
+Traceback (most recent call last):
+  File "E:\iNeuron\DL_Sunny\125_MLflow_project\MLflow_CNN_app\env\lib\shutil.py", line 566, in move
+    os.rename(src, real_dst)
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'data\\bad_img' -> 'data\\bad_img\\bad_img'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "src/stage_02_validate_image.py", line 64, in <module>
+    main(config_path=parsed_args.config)
+  File "src/stage_02_validate_image.py", line 31, in main
+    validate_data(local_dir,bad_img_dir)
+  File "src/stage_02_validate_image.py", line 50, in validate_data
+    shutil.move(img_path,bad_data_path)
+  File "E:\iNeuron\DL_Sunny\125_MLflow_project\MLflow_CNN_app\env\lib\shutil.py", line 575, in move
+    " '%s'." % (src, dst))
+shutil.Error: Cannot move a directory 'data\bad_img' into itself 'data\bad_img\bad_img'.
+[2022-10-18 19:57:14,615: INFO: stage_02_validate_image]: 
 ********************
-[2022-10-14 16:09:18,809: INFO: stage_01_get_data]: >>>>> stage get_data started <<<<<
-[2022-10-14 16:09:18,809: INFO: common]: yaml file: configs/config.yaml loaded successfully
-[2022-10-14 16:09:18,809: INFO: stage_01_get_data]: >>>>> stage get_data completed!<<<<<
+[2022-10-18 19:57:14,615: INFO: stage_02_validate_image]: >>>>> stage validate_data started <<<<<
+[2022-10-18 19:57:14,618: INFO: common]: yaml file: configs/config.yaml loaded successfully
+[2022-10-18 19:57:14,618: INFO: common]: created directory at: data\bad_img
+[2022-10-18 19:57:14,618: INFO: stage_02_validate_image]: Validation of images are started
+[2022-10-18 19:57:22,533: INFO: stage_02_validate_image]: >>>>> stage validate_data completed!<<<<<
+
+[2022-10-18 22:12:05,270: INFO: stage_02_validate_image]: 
+********************
+[2022-10-18 22:12:05,270: INFO: stage_02_validate_image]: >>>>> stage validate_data started <<<<<
+[2022-10-18 22:12:05,270: INFO: common]: yaml file: configs/config.yaml loaded successfully
+[2022-10-18 22:12:05,270: INFO: common]: created directory at: data\bad_img
+[2022-10-18 22:12:05,270: INFO: stage_02_validate_image]: Validation of images are started
+[2022-10-18 22:12:05,291: ERROR: stage_02_validate_image]: Cannot move a directory 'data\bad_img' into itself 'data\bad_img\bad_img'.
+Traceback (most recent call last):
+  File "src/stage_02_validate_image.py", line 41, in validate_data
+    img1 = Image.open(img_path)
+  File "E:\iNeuron\DL_Sunny\125_MLflow_project\MLflow_CNN_app\env\lib\site-packages\PIL\Image.py", line 3092, in open
+    fp = builtins.open(filename, "rb")
+PermissionError: [Errno 13] Permission denied: 'data\\bad_img'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\iNeuron\DL_Sunny\125_MLflow_project\MLflow_CNN_app\env\lib\shutil.py", line 566, in move
+    os.rename(src, real_dst)
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'data\\bad_img' -> 'data\\bad_img\\bad_img'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "src/stage_02_validate_image.py", line 66, in <module>
+    main(config_path=parsed_args.config)
+  File "src/stage_02_validate_image.py", line 32, in main
+    validate_data(local_dir,bad_img_dir)
+  File "src/stage_02_validate_image.py", line 52, in validate_data
+    shutil.move(img_path,bad_data_path)
+  File "E:\iNeuron\DL_Sunny\125_MLflow_project\MLflow_CNN_app\env\lib\shutil.py", line 575, in move
+    " '%s'." % (src, dst))
+shutil.Error: Cannot move a directory 'data\bad_img' into itself 'data\bad_img\bad_img'.
+[2022-10-18 22:14:01,965: INFO: stage_02_validate_image]: 
+********************
+[2022-10-18 22:14:01,965: INFO: stage_02_validate_image]: >>>>> stage validate_data started <<<<<
+[2022-10-18 22:14:01,968: INFO: common]: yaml file: configs/config.yaml loaded successfully
+[2022-10-18 22:14:01,968: INFO: common]: created directory at: bad_data_img
+[2022-10-18 22:14:01,968: INFO: stage_02_validate_image]: Validation of images are started
+[2022-10-18 22:15:32,335: INFO: stage_02_validate_image]: 
+********************
+[2022-10-18 22:15:32,335: INFO: stage_02_validate_image]: >>>>> stage validate_data started <<<<<
+[2022-10-18 22:15:32,335: INFO: common]: yaml file: configs/config.yaml loaded successfully
+[2022-10-18 22:15:32,335: INFO: common]: created directory at: bad_data_img
+[2022-10-18 22:15:32,335: INFO: stage_02_validate_image]: Validation of images are started
+[2022-10-18 22:19:02,468: INFO: stage_02_validate_image]: Validation of images is completed
+[2022-10-18 22:19:02,468: INFO: stage_02_validate_image]: >>>>> stage validate_data completed!<<<<<
 
