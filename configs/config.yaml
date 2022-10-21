@@ -20,12 +20,19 @@ data:
   train : 'train_data'
   label1 : 'class_1'
   label2 : 'class_2'
+  model_dir : model
+  init_model_file : model.h5
+
+params:
+  img_size : [180,180,3]
+  batch_size : 32
+  loss : sparse_categorical_crossentropy
+  lr_rate : 0.001
+  metrics : ["accuracy"]
+  validation_split : 0.2
+  seed : 42
+  buffer_size : 32
+  epochs : 1
 
 
-source_download_dirs:
-  - path_to_data_1
-  - path_to_data_1
 
-local_data_dirs:
-  - path_to_local_data_1
-  - path_to_local_data_2
