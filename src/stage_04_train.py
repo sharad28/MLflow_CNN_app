@@ -6,12 +6,13 @@ import logging
 from src.utils.common import read_yaml, create_directories
 import random
 import tensorflow as tf
+import mlflow
 
 
 STAGE = "Train Stage" ## <<< change stage name 
 
 logging.basicConfig(
-    filename=os.path.join("logs"), 
+    filename=os.path.join("logs",'running_logs.log'), 
     level=logging.INFO, 
     format="[%(asctime)s: %(levelname)s: %(module)s]: %(message)s",
     filemode="a"
@@ -19,6 +20,7 @@ logging.basicConfig(
 
 
 def main(config_path):
+    
     ## read config files
     config = read_yaml(config_path)
     ## get ready the data
@@ -61,6 +63,10 @@ def main(config_path):
 
     classifier.save(train_model_file)
     logging.info(f"trained model is saved at :{train_model_file}")
+
+    with mlflow.start_run() as runs:
+        mlflow.log_params(params)
+        mlflow.keras.log_model(classifier, "model")
 
     
 if __name__ == '__main__':
