@@ -143,5 +143,7 @@ mlruns/
 #ignore data
 /data
 /bad_data_img
+/train_data
 #ignore log data
+/logs
 logs/running_logs.log
