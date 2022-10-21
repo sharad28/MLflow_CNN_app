@@ -9,6 +9,10 @@ import mlflow
 
 STAGE = "Main" ## <<< change stage name 
 
+create_directories(['logs'])
+with open(os.path.join("logs", 'running_logs.log'), "w+") as f:
+    f.write("")
+
 logging.basicConfig(
     filename=os.path.join("logs", 'running_logs.log'), 
     level=logging.INFO, 
@@ -21,6 +25,7 @@ def main():
     with mlflow.start_run() as run:
         mlflow.run('.',"get_data", use_conda=False)
         mlflow.run('.',"validate_image",use_conda=False)
+        mlflow.run(".","base_model_creation",use_conda=False)
         mlflow.run(".","base_model_creation",use_conda=False)
 
 if __name__ == '__main__':
