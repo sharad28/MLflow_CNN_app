@@ -32,14 +32,16 @@ def main(config_path):
     create_directories(bad_img_dir)
     validate_data(local_dir,bad_img_dir)
 
-    label1 = os.path.join(config["data"]['train'],config["data"]['label1']")
-    label2 = os.path.join(config["data"]['train'],config["data"]['label2']")
+    label1 = os.path.join(config["data"]['train'],config["data"]['label1'])
+    label2 = os.path.join(config["data"]['train'],config["data"]['label2'])
     create_dir_label(local_dir,label1,label2)
 
 def validate_data(source_dir,bad_img_dir):
     logging.info("Validation of images are started")
     for img in os.listdir(source_dir[0]):
         img_path = os.path.join(source_dir[0],img)
+        if os.path.isdir(img_path):
+            continue
         bad_data_path = os.path.join(bad_img_dir[0],img)
         try:
             img1 = Image.open(img_path)
