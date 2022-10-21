@@ -21,7 +21,8 @@ data:
   label1 : 'class_1'
   label2 : 'class_2'
   model_dir : model
-  init_model_file : model.h5
+  init_model_file : init_model.h5
+  train_model_file : trained_model.h5
 
 params:
   img_size : [180,180,3]
