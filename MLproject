@@ -20,3 +20,8 @@ entry_points:
     parameters:
       config : {type: str, default: "configs/config.yaml"}
     command : "python src/stage_03_base_model.py"
+  
+  train_model_creation:
+    parameters:
+      config : {type: str, default: "configs/config.yaml"}
+    command : "python src/stage_04_train.py"
