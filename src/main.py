@@ -26,7 +26,7 @@ def main():
         mlflow.run('.',"get_data", use_conda=False)
         mlflow.run('.',"validate_image",use_conda=False)
         mlflow.run(".","base_model_creation",use_conda=False)
-        mlflow.run(".","base_model_creation",use_conda=False)
+        mlflow.run(".","train_model_creation",use_conda=False)
 
 if __name__ == '__main__':
     try:
