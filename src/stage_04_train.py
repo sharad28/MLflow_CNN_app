@@ -65,7 +65,7 @@ def main(config_path):
     logging.info(f"trained model is saved at :{train_model_file}")
 
     with mlflow.start_run() as runs:
-        mlflow.log_params(params)
+        mlflow.log_params(config['params'])
         mlflow.keras.log_model(classifier, "model")
 
     
