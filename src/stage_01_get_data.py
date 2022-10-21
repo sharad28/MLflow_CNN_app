@@ -27,8 +27,11 @@ def main(config_path):
     config = read_yaml(config_path)
     data_path = config['data']['data_source']
     local_dir = config['data']['local_dir']
-    create_directories(local_dir)
-    moving_data(data_path,local_dir)
+    if not os.path.exists(local_dir[0]):
+        create_directories(local_dir)
+        moving_data(data_path,local_dir)
+    else:
+        logging.info(f"folder already exist in {local_dir}")
     pass
 
 
